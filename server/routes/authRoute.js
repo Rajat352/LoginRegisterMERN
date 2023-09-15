@@ -3,7 +3,7 @@ const express = require("express");
 const { userVerification } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
-router.post("/signup", Signup);
+router.post("/register", Signup);
 router.post("/login", Login);
 router.post("/", userVerification);
 

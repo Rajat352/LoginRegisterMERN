@@ -10,7 +10,13 @@ const authRoute = require("./routes/authRoute");
 const PORT = process.env.PORT || 3000;
 const mongodb_url = process.env.MONGODB_URL;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
