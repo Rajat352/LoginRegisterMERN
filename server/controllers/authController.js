@@ -80,7 +80,7 @@ module.exports.RequestPasswordReset = async (req, res, next) => {
             createdAt: Date.now(),
         }).save();
 
-        const link = `https://loginregistermernfrontend.onrender.com/passwordReset?token=${resetToken}&id=${user._id}`;
+        const link = `https://main--deluxe-sopapillas-a6ab91.netlify.app/passwordReset?token=${resetToken}&id=${user._id}`;
         sendEmail(
             user.email,
             "Password Reset Request",
