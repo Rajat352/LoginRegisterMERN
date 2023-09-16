@@ -5,53 +5,53 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [cookies, removeCookie] = useCookies([]);
-    const [username, setUsername] = useState("");
+  const [cookies, removeCookie] = useCookies([]);
+  const [username, setUsername] = useState("");
 
-    useEffect(() => {
-        const verifyCookie = async () => {
-            if (!cookies.token) {
-                navigate("/login");
-            }
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) {
+        navigate("https://loginregistermernbackend.onrender.com/login");
+      }
 
-            const { data } = await axios.post(
-                "http://localhost:5000",
-                {},
-                { withCredentials: true }
-            );
+      const { data } = await axios.post(
+        "https://loginregistermernbackend.onrender.com",
+        {},
+        { withCredentials: true }
+      );
 
-            const { status, user } = data;
-            setUsername(user);
+      const { status, user } = data;
+      setUsername(user);
 
-            return status
-                ? toast(`Hello ${user}`, {
-                    position: "top-right",
-                })
-                : (removeCookie("token"), navigate("/login"));
-        };
-
-        verifyCookie();
-    }, [cookies, navigate, removeCookie]);
-
-    const Logout = () => {
-        removeCookie("token");
-        navigate("/register");
+      return status
+        ? toast(`Hello ${user}`, {
+            position: "top-right",
+          })
+        : (removeCookie("token"), navigate("/login"));
     };
 
-    return (
-        <div>
-            <div className="flex flex-col text-center text-4xl jutify-center">
-                <h1 className="my-10">Home</h1>
-                <h2 className="my-5">Welcome {username}</h2>
-                <button onClick={Logout} className="text-xl text-red-300">
-                    Logout
-                </button>
-            </div>
-            <ToastContainer />
-        </div>
-    );
+    verifyCookie();
+  }, [cookies, navigate, removeCookie]);
+
+  const Logout = () => {
+    removeCookie("token");
+    navigate("https://loginregistermernbackend.onrender.com/register");
+  };
+
+  return (
+    <div>
+      <div className="flex flex-col text-center text-4xl jutify-center">
+        <h1 className="my-10">Home</h1>
+        <h2 className="my-5">Welcome {username}</h2>
+        <button onClick={Logout} className="text-xl text-red-300">
+          Logout
+        </button>
+      </div>
+      <ToastContainer />
+    </div>
+  );
 };
 
 export default Home;
