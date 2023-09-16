@@ -13,11 +13,11 @@ const Home = () => {
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
-        navigate("https://loginregistermernbackend.onrender.com/login");
+        navigate("/login");
       }
 
       const { data } = await axios.post(
-        "https://loginregistermernbackend.onrender.com",
+        "https://loginregistermernfrontend.onrender.com",
         {},
         { withCredentials: true }
       );
@@ -37,7 +37,7 @@ const Home = () => {
 
   const Logout = () => {
     removeCookie("token");
-    navigate("https://loginregistermernbackend.onrender.com/register");
+    navigate("/register");
   };
 
   return (

@@ -15,6 +15,7 @@ app.use(
         origin: [
             "https://loginregistermernfrontend.onrender.com",
             "https://main--deluxe-sopapillas-a6ab91.netlify.app",
+            "localhost:5173",
         ],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
