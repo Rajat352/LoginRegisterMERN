@@ -11,11 +11,14 @@ const PORT = process.env.PORT || 3000;
 const mongodb_url = process.env.MONGODB_URL;
 
 app.use(
-  cors({
-    origin: ["https://loginregistermernfrontend.onrender.com"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
+    cors({
+        origin: [
+            "https://loginregistermernfrontend.onrender.com",
+            "https://main--deluxe-sopapillas-a6ab91.netlify.app",
+        ],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
 );
 app.use(express.json());
 app.use(cookieParser());
@@ -23,13 +26,13 @@ app.use(cookieParser());
 app.use("/", authRoute);
 
 mongoose
-  .connect(mongodb_url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB is  connected successfully"))
-  .catch((err) => console.error(err));
+    .connect(mongodb_url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(() => console.log("MongoDB is  connected successfully"))
+    .catch((err) => console.error(err));
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
