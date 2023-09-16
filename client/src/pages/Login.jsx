@@ -95,6 +95,12 @@ const Login = () => {
                         Register
                     </Link>
                 </div>
+                <div className="text-xl">
+                    Forgot your password?
+                    <Link to="/request-password-reset" className="text-blue-200">
+                        Reset
+                    </Link>
+                </div>
             </form>
             <ToastContainer />
         </div>
